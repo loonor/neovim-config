@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export NEOVIM_REPO="https://github.com/KMK-ONLINE/neovim-config.git"
+export NEOVIM_REPO="https://github.com/loonor/neovim-config.git"
 export NEOVIM_DIR="${HOME}/.config/nvim"
 export VUNDLE_DIR="${NEOVIM_DIR}/bundle/Vundle.vim"
 export VUNDLE_REPO="https://github.com/VundleVim/Vundle.vim"

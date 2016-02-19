@@ -2,5 +2,5 @@
 
 ## Quick Install
 ```
-wget -O - https://raw.githubusercontent.com/KMK-ONLINE/neovim-config/master/install.sh | bash
+wget -O - https://github.com/loonor/neovim-config/master/install.sh | bash
 ```

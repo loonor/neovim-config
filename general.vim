@@ -87,4 +87,6 @@ au BufRead,BufNewFile *.hh set filetype=php
 
 " *.es6 is javascript file
 au BufRead,BufNewFile *.es6 set filetype=javascript
-
+" Neovim-qt Guifont command
+command -nargs=? Guifont call rpcnotify(0, 'Gui', 'SetFont', "<args>")
+let g:Guifont="DejaVu Sans Mono:h15"
