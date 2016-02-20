@@ -1,17 +1,33 @@
-" === PLUGINS ===
+" Note: Skip initialization for vim-tiny or vim-small.
+ if 0 | endif
 
-" required by vunddle
-filetype off                  " required
+ if has('vim_starting')
+   if &compatible
+     set nocompatible               " Be iMproved
+   endif
+filetype off
+   " Required:
+   "set runtimepath+=~/.config/nvim/bundle/Vundle.vim/
+    if has("win32")
+        set rtp+=$VIM/vimfiles/bundle/vundle.vim/
+        call vundle#begin('$VIM/vimfiles/bundle')
+    else
+        set rtp+=~/.config/nvim/bundle/Vundle.vim/
+        call vundle#begin('~/.config/nvim/bundle/')
+    endif
+ endif
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim/
+ " Required:
+ "call neobundle#begin(expand('~/.vim/bundle/'))
 
-
-" required by vunddle
-call vundle#begin('~/.config/nvim/bundle')
-
-" let Vundle manage Vundle, required
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ "Plugin 'Shougo/neobundle.vim'
+"""Plugin 'gmarik/vundle.vim'
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'a.vim'
 Plugin 'andreimaxim/vim-io'
 Plugin 'bling/vim-airline'
@@ -248,12 +264,17 @@ Plugin 'xml.vim'
 Plugin 'xsbeats/vim-blade'
 Plugin 'yggdroot/indentline'
 Plugin 'zah/nim.vim'
+ call vundle#end()
 
-" required by vunddle
-call vundle#end()
+ " Required:
+ filetype plugin indent on
 
-" required by vunddle
-filetype plugin indent on " required by vunddle
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+"NeoBundleCheck
+ 
+"let g:neobundle#install_process_timeout = 1500
+
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -361,7 +382,7 @@ endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " 加载pathogen插件管理器
 execute pathogen#infect()
-let g:snippets_dir = '~/.vim/bundle/vim-snippets/snippets/'
+let g:snippets_dir = '~/.config/nvim/bundle/vim-snippets/snippets/'
 " nerd_commenter      注释处理插件
 let nerdspacedelims = 1                        " 自动添加前置空格
 
@@ -549,9 +570,3 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html,*.php exec ":c
 filetype plugin on
 " 为特定文件类型载入相关缩进文件
 filetype indent on
-"Use local vimrc if available {
-if filereadable(expand("~/.vim/local.vim"))
-    source ~/.vim/local.vim 
-endif 
-"}
-

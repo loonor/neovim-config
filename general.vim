@@ -90,3 +90,5 @@ au BufRead,BufNewFile *.es6 set filetype=javascript
 " Neovim-qt Guifont command
 command -nargs=? Guifont call rpcnotify(0, 'Gui', 'SetFont', "<args>")
 let g:Guifont="DejaVu Sans Mono:h15"
+
+let g:python_host_prog = '/usr/bin/python'
